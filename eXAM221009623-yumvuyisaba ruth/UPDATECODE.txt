@@ -1,0 +1,27 @@
+try {
+            
+            String id=jTextField1.getText();
+            String name=jTextField2.getText();
+            String age=jTextField3.getText();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/huye","root","");
+            PreparedStatement ps=con.prepareStatement("Update bit set name=?,age=?,gender=? where id=?");
+            ps.setString(1, name);
+            ps.setString(2, age);
+           if(jRadioButton1.isSelected())
+           {
+               ps.setString(3,jRadioButton1.getText());
+           }
+           else 
+               ps.setString(3,jRadioButton2.getText());
+           
+           ps.setString(4, id);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Update Successfully"); 
+        } catch (Exception ex) {
+            Logger.getLogger(myframe.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        
+       
+     
+       

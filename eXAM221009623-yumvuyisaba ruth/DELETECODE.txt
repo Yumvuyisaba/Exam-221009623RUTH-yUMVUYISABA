@@ -1,0 +1,15 @@
+try {
+            
+            String id=jTextField1.getText();
+            String name=jTextField2.getText();
+            String age=jTextField3.getText();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/huye","root","");
+            PreparedStatement ps=con.prepareStatement("Delete from bit where id=?");
+           
+           ps.setString(1, id);
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Delete Successfully"); 
+        } catch (Exception ex) {
+            Logger.getLogger(myframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
